@@ -16,7 +16,7 @@ public:
 
     std::array<float, width_* height_> input_image_{};
     std::array<float, 10>              results_{};
-    int64_t							   result_{ 0 };
+    int64_t                            result_{ 0 };
 
     ONNX_Model() 
     {
@@ -48,13 +48,13 @@ public:
 
 private:
     //Ort::Env env;
-    Ort::Env				env = Ort::Env(ORT_LOGGING_LEVEL_WARNING, "Default");
-    Ort::Session			session_{ env, L"model.onnx", Ort::SessionOptions{nullptr} };
+    Ort::Env                env = Ort::Env(ORT_LOGGING_LEVEL_WARNING, "Default");
+    Ort::Session            session_{ env, L"model.onnx", Ort::SessionOptions{nullptr} };
 
-    Ort::Value				input_tensor_{ nullptr };
-    std::array<int64_t, 4>	input_shape_{ 1, 1, width_, height_ };
-    Ort::Value				output_tensor_{ nullptr };
-    std::array<int64_t, 2>	output_shape_{ 1, 10 };
+    Ort::Value              input_tensor_{ nullptr };
+    std::array<int64_t, 4>  input_shape_{ 1, 1, width_, height_ };
+    Ort::Value              output_tensor_{ nullptr };
+    std::array<int64_t, 2>  output_shape_{ 1, 10 };
 };
 
 void randomize_28x28_img(std::array<float, 784> &inp_array)
